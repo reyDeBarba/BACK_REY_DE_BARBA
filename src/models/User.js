@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
@@ -19,7 +19,9 @@ const UserSchema = new mongoose.Schema(
     lastName: { type: String },
     photoURL: { type: String },
     points: { type: Number },
+    barber: { type: Boolean, default: false },
     admin: { type: Boolean, default: false },
+    works: { type: Schema.Types.ObjectId, ref: "Works" },
   },
   { timestamps: true }
 );
