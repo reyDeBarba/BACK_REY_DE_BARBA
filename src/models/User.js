@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema(
     points: { type: Number },
     barber: { type: Boolean, default: false },
     admin: { type: Boolean, default: false },
-    works: { type: Schema.Types.ObjectId, ref: "Works" },
+    works: { type: mongoose.Schema.Types.ObjectId, ref: "Works" },
   },
   { timestamps: true }
 );

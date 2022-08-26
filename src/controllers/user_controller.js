@@ -41,6 +41,7 @@ const login = async (req, res) => {
     const accessToken = sign(
       {
         id: user._id,
+        barber: user.barber,
         admin: user.admin,
       },
       process.env.JWT_SECRET_KEY,
@@ -48,13 +49,13 @@ const login = async (req, res) => {
     );
 
     const { password, ...others } = user._doc;
-    const { _id } = others;
+
     !user || descryptedPassword !== req.body.password
       ? res
           .status(401)
           .json({ status: 401, error: "Wrong invalid credentials" })
       : res.status(200).json({
-          id: _id,
+          ...others,
           accessToken,
           message: "Login successfully",
           status: 200,
