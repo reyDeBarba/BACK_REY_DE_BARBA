@@ -2,8 +2,13 @@ import jwt from "jsonwebtoken";
 const { verify } = jwt;
 
 /**
- * Se verifica si el usuario esta logeado
+ * Verificar si un usuario esta logeado
+ * @param {por headers, token de authorization} req
+ * @param {uset authorizate!} res
+ * @param {func de callback para seguir ejecución} next
+ * @returns
  */
+
 const verifyToken = (req, res, next) => {
   const bearerHeader = req.headers.authorization;
   if (bearerHeader) {

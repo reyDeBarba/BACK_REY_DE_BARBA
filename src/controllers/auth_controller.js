@@ -6,6 +6,8 @@ const { sign } = jwt;
 
 /**
  * Registro de usuario
+ * @param {email,password} req
+ * @param {user registrado} res
  */
 
 const register = async (req, res) => {
@@ -18,7 +20,7 @@ const register = async (req, res) => {
   });
 
   try {
-    const savedUser = await newUser.save();
+    await newUser.save();
     res.status(201).json({ status: 201, message: "User created successfully" });
   } catch (error) {
     res.status(500).json({ status: 400, error: error.message });
@@ -26,7 +28,9 @@ const register = async (req, res) => {
 };
 
 /**
- * Login de usuario
+ * Login del usuario
+ * @param {email,password} req
+ * @param {data del usuario} res
  */
 
 const login = async (req, res) => {

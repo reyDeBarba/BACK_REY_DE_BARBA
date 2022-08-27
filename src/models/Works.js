@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const WorksSchema = new mongoose.Schema(
   {
-    barberId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    user: { type: mongoose.Types.ObjectId, ref: "User" },
     days: { type: Array },
   },
   { timestamps: true }

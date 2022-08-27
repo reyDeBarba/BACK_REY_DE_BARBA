@@ -1,7 +1,10 @@
 import authVerify from "./authVerify.js";
 
 /**
- * Verificación de si el usuario es admin
+ * Verificar si el usuario actual es Admin
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 const varifyTokenAndAdmin = (req, res, next) => {
   authVerify.verifyToken(req, res, () => {
