@@ -5,9 +5,13 @@ import roleValidate from "../middleware/roleValidate.js";
 const router = Router();
 
 /**
+ * Trare todos los servicios
+ */
+router.get("/", serviceControllers.allServices);
+
+/**
  * Crear un nuevo servicio
  */
-
 router.post(
   "/",
   roleValidate.varifyTokenAndAdmin,
