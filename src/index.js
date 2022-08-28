@@ -13,7 +13,7 @@ dotenv.config();
 /**
  * Middleware express
  */
-app.use(cors());
+app.use(cors("*"));
 app.use(express.json());
 
 const specs = swaggerJsdoc(options);
