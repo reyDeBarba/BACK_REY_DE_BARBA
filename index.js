@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import "./settings/db.js";
-import indexRoutes from "./routes/routes.js";
+import "./src/settings/db.js";
+import indexRoutes from "./src/routes/routes.js";
 import swaggerUI from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
-import { options } from "./settings/swaggerOptions.js";
+import { options } from "./src/settings/swaggerOptions.js";
 
 const app = express();
 dotenv.config();
