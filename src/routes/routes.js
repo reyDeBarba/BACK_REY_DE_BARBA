@@ -1,6 +1,7 @@
 import { Router } from "express";
 import authRoutes from "./auth.js";
 import barberRoutes from "./barber.js";
+import discountsRoutes from "./discounts.js";
 import servicesRoutes from "./services.js";
 import usersRoutes from "./user.js";
 import worksRoutes from "./works.js";
@@ -12,6 +13,7 @@ const router = Router();
  */
 router.use("/auth", authRoutes);
 router.use("/barbers", barberRoutes);
+router.use("/discounts", discountsRoutes);
 router.use("/services", servicesRoutes);
 router.use("/users", usersRoutes);
 router.use("/works", worksRoutes);
