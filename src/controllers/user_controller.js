@@ -24,7 +24,7 @@ const getOneUser = async (req, res) => {
  */
 const getAlluser = async (req, res) => {
   try {
-    const allUser = await User.find({ barber: false });
+    const allUser = await User.find({});
     res
       .status(200)
       .json({ status: 200, message: "Successfully all users", data: allUser });
