@@ -1,7 +1,43 @@
 import { Router } from "express";
 import authControllers from "../controllers/auth_controller.js";
 
+import passport from 'passport'
+import GoogleStrategy from 'passport-google-oidc'
+
+import User from "../models/User.js";
+
+import { Op } from 'sequelize'
+
 const router = Router();
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: '/oauth2/redirect/google',
+        scope: [ 'profile' ]
+    }), 
+    (accessToken, refreshToken, profile, cb) => {
+        const [user, created] = User.findOrCreate(
+        {
+            where: {email: {[Op.in]: profile.emails.map(email => email.value)}},
+            defaults: {
+                email: profile.emails[0],
+                firstName: profile.givenName,
+                lastName: profile.familyName,
+                photoURL: profile.photos[0].value,
+                points: 0
+            }
+        }, 
+        (err, user) => {
+            cb(err, user);
+        });
+        if(!created){
+
+        }
+    }
+)
+
+
 
 /**
  * @swagger
@@ -56,5 +92,12 @@ router.post("/register", authControllers.register);
  */
 
 router.post("/login", authControllers.login);
+
+router.get("/login/federated/google", passport.authenticate('google'))
+
+router.get('/oauth2/redirect/google', passport.authenticate('google', {
+    successRedirect: '/',
+    failureRedirect: '/'
+}));
 
 export default router;
