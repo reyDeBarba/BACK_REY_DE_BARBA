@@ -10,6 +10,7 @@ const createPost = async (req, res) => {
     images: req.body.images,
     description: req.body.description,
     user: req.body.user,
+    services: req.body.services,
   });
   try {
     const savedPost = await newPost.save();
@@ -25,7 +26,10 @@ const createPost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
   try {
-    const allPosts = await Post.find({}).populate("user").exec();
+    const allPosts = await Post.find({})
+      .populate("user")
+      .populate("services")
+      .exec();
     res.status(200).json({
       status: 200,
       message: "Successfully get all posts",
@@ -54,6 +58,7 @@ const likeDislike = async (req, res) => {
   }
 };
 
+//NO DEBE PODER QUITAR QUE VIO LA PUBLICACIÖN
 const viewsAndNotSeen = async (req, res) => {
   const { id } = req.params;
   try {
@@ -61,12 +66,8 @@ const viewsAndNotSeen = async (req, res) => {
     if (!post.views.includes(req.body.userId)) {
       await post.updateOne({ $push: { views: req.body.userId } });
       res.status(200).json({ status: 200, message: "The post has been view" });
-    } else {
-      await post.updateOne({ $pull: { views: req.body.userId } });
-      res
-        .status(200)
-        .json({ status: 200, message: "The post has been not seen" });
     }
+    res.status(200).json({ status: 200, message: "You view post" });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
