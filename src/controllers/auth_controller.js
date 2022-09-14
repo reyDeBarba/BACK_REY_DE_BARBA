@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import CryptoJS, { x64 } from "crypto-js";
+import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
 
 const { sign } = jwt;
@@ -95,6 +95,4 @@ const login = async (req, res) => {
   }
 };
 
-const loginWithGoogle = 1
-
-export default { register, registerWithGoogle, login, loginWithGoogle };
+export default { register, registerWithGoogle, login };

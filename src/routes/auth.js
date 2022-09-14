@@ -1,22 +1,18 @@
 import { Router } from "express";
 import authControllers from "../controllers/auth_controller.js";
-
 import passport from 'passport'
 import GoogleStrategy from 'passport-google-oidc'
-
 import User from "../models/User.js";
-
 import { Op } from 'sequelize'
 
 const router = Router();
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
+        clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: '/oauth2/redirect/google',
         scope: [ 'profile' ]
-    }), 
-    (accessToken, refreshToken, profile, cb) => {
+    }, (accessToken, refreshToken, profile, cb) => {
         const [user, created] = User.findOrCreate(
         {
             where: {email: {[Op.in]: profile.emails.map(email => email.value)}},
@@ -27,15 +23,29 @@ passport.use(new GoogleStrategy({
                 photoURL: profile.photos[0].value,
                 points: 0
             }
-        }, 
-        (err, user) => {
-            cb(err, user);
-        });
-        if(!created){
+        })
 
+        if(!created){
+            cb(null, {...user, accessToken, refreshToken})
+        } else {
+            cb(null, {...user, accessToken, refreshToken})
         }
     }
-)
+))
+    
+
+passport.serializeUser(function(user, cb) {
+    process.nextTick(function() {
+        console.log(user.username)
+        cb(null, { id: user.id, username: user.username, name: user.name });
+    });
+});
+  
+passport.deserializeUser(function(user, cb) {
+    process.nextTick(function() {
+        return cb(null, user);
+    });
+});
 
 
 
