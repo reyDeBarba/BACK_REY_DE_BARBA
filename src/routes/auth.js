@@ -5,6 +5,13 @@ import GoogleStrategy from 'passport-google-oidc'
 import User from "../models/User.js";
 import { Op } from 'sequelize'
 
+import passport from 'passport'
+import GoogleStrategy from 'passport-google-oidc'
+
+import User from "../models/User.js";
+
+import { Op } from 'sequelize'
+
 const router = Router();
 
 passport.use(new GoogleStrategy({

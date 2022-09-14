@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import CryptoJS from "crypto-js";
+import CryptoJS, { x64 } from "crypto-js";
 import jwt from "jsonwebtoken";
 
 const { sign } = jwt;
