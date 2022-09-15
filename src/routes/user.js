@@ -10,6 +10,8 @@ router.get("/:id", authRole.varifyTokenAndAdmin, userController.getOneUser);
 
 router.put("/:id", authRole.varifyTokenAndAdmin, userController.updateRole);
 
+router.put("/:id/discount", userController.updatePoints);
+
 router.delete("/:id", authRole.varifyTokenAndAdmin, userController.deleteUser);
 
 export default router;

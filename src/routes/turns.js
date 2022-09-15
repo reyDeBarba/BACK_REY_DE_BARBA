@@ -8,5 +8,9 @@ const router = Router();
  * Crear un turno
  */
 router.post("/", authVerify.verifyToken, turnController.createTurn);
+/**
+ * Actualizar turno de barbero
+ */
+router.put("/:id", turnController.updateTurnsBarber);
 
 export default router;

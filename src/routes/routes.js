@@ -4,6 +4,7 @@ import barberRoutes from "./barber.js";
 import discountsRoutes from "./discounts.js";
 import postsRoutes from "./posts.js";
 import servicesRoutes from "./services.js";
+import turnsRoutes from "./turns.js";
 import usersRoutes from "./user.js";
 import worksRoutes from "./works.js";
 
@@ -17,6 +18,7 @@ router.use("/barbers", barberRoutes);
 router.use("/discounts", discountsRoutes);
 router.use("/posts", postsRoutes);
 router.use("/services", servicesRoutes);
+router.use("/turns", turnsRoutes);
 router.use("/users", usersRoutes);
 router.use("/works", worksRoutes);
 
