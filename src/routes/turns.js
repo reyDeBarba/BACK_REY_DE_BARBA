@@ -18,4 +18,10 @@ router.put("/:id", turnController.updateTurnsBarber);
  */
 router.get("/", roleValidate.varifyTokenAndAdmin, turnController.getAllTurns);
 
+router.delete(
+  "/:id",
+  roleValidate.varifyTokenAndAdmin,
+  turnController.deleteTurn
+);
+
 export default router;

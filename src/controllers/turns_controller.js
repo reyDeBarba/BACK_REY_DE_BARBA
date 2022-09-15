@@ -94,4 +94,16 @@ const updateTurnsBarber = async (req, res) => {
   }
 };
 
-export default { createTurn, getAllTurns, updateTurnsBarber };
+const deleteTurn = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedTurn = await Turns.findByIdAndDelete({ _id: id });
+    res
+      .status(200)
+      .json({ status: 200, message: "Deleted turn", data: deletedTurn });
+  } catch (error) {
+    res.status(500).json({ status: "Error", error: error.message });
+  }
+};
+
+export default { createTurn, deleteTurn, getAllTurns, updateTurnsBarber };
