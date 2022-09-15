@@ -24,6 +24,34 @@ const createTurn = async (req, res) => {
   }
 };
 
+const getAllTurns = async (req, res) => {
+  try {
+    const turns = await Turns.find({})
+      .populate("barberId", {
+        firstName: 1,
+        photoURL: 1,
+        email: 1,
+      })
+      .populate("clientId", {
+        email: 1,
+        firstName: 1,
+        photoURL: 1,
+      })
+      .populate("serviceId", {
+        amount: 1,
+        description: 1,
+        photoURL: 1,
+        points: 1,
+        title: 1,
+      });
+    res
+      .status(200)
+      .json({ status: 200, message: "Successful request", data: turns });
+  } catch (error) {
+    res.status(500).json({ status: "Error", error: error.message });
+  }
+};
+
 const updateTurnsBarber = async (req, res) => {
   const { id } = req.params;
   const { dateReq, hourReq } = req.body;
@@ -66,4 +94,4 @@ const updateTurnsBarber = async (req, res) => {
   }
 };
 
-export default { createTurn, updateTurnsBarber };
+export default { createTurn, getAllTurns, updateTurnsBarber };
