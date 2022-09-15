@@ -61,10 +61,20 @@ const updateRole = async (req, res) => {
 const updatePoints = async (req, res) => {
   const { id } = req.params;
   try {
-    const user = await User.findById({ _id: id });
-    console.log({ user });
+    const addPointUser = await User.findByIdAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          points: req.body.points,
+        },
+      },
+      { new: true }
+    );
+    res
+      .status(200)
+      .json({ status: 200, message: "Points added", data: addPointUser });
   } catch (error) {
-    console.log({ error: error.message });
+    res.status(500).json({ status: 500, error: error.message });
   }
 };
 
