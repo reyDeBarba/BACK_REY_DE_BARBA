@@ -56,8 +56,10 @@ const updateDiscount = async (req, res) => {
 const deleteDiscount = async (req, res) => {
   const { id } = req.params;
   try {
-    await Discounts.findByIdAndDelete(id);
-    res.status(200).json({ status: 200, message: "Discount deleted" });
+    const resp = await Discounts.findByIdAndDelete(id);
+    res
+      .status(200)
+      .json({ status: 200, message: "Discount deleted", data: resp._id });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
