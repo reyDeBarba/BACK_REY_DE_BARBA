@@ -10,7 +10,8 @@ router.post(
   discountsController.createDisucounts
 );
 router.get("/", discountsController.getAllDiscounts);
-router.put("/:id", discountsController.updateDiscount);
 router.delete("/:id", discountsController.deleteDiscount);
+router.put("/:id", discountsController.updateDiscount);
+router.put("/:id/point", discountsController.shopDiscount);
 
 export default router;
