@@ -24,10 +24,10 @@ const createDisucounts = async (req, res) => {
   });
 
   try {
-    await newDiscount.save();
+    const discountSave = await newDiscount.save();
     res
       .status(200)
-      .json({ status: 200, message: "Successfully save discounts" });
+      .json({ status: 200, message: "Successfully save discounts", data: discountSave });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
