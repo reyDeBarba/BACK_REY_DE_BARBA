@@ -86,8 +86,14 @@ const updatePoints = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
-    await User.findByIdAndDelete(id);
-    res.status(200).json({ status: 200, message: "Successfully user deleted" });
+    const userDeleted = await User.findByIdAndDelete(id);
+    res
+      .status(200)
+      .json({
+        status: 200,
+        message: "Successfully user deleted",
+        data: userDeleted._id,
+      });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
