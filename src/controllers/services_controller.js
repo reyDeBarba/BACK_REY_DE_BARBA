@@ -35,10 +35,10 @@ const createService = async (req, res) => {
     title: req.body.title,
   });
   try {
-    await newService.save();
+    const serviceSave = await newService.save();
     res
       .status(201)
-      .json({ status: 201, message: "Service created successfully" });
+      .json({ status: 201, message: "Service created successfully", data:serviceSave });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
