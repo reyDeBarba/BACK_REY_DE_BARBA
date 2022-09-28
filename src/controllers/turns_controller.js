@@ -97,7 +97,7 @@ const updateTurnsBarber = async (req, res) => {
 const updatePayment = async (req, res) => {
   const { id } = req.params;
   try {
-    const worksPayment = await Works.findByIdAndUpdate(
+    const turnPayment = await Turns.findByIdAndUpdate(
       id,
       {
         $set: req.body,
@@ -107,7 +107,7 @@ const updatePayment = async (req, res) => {
     res.status(200).json({
       status: 200,
       message: "Successfully update works payment",
-      data: worksPayment,
+      data: turnPayment,
     });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
