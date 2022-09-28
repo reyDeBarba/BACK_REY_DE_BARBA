@@ -94,6 +94,26 @@ const updateTurnsBarber = async (req, res) => {
   }
 };
 
+const updatePayment = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const worksPayment = await Works.findByIdAndUpdate(
+      id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).json({
+      status: 200,
+      message: "Successfully update works payment",
+      data: worksPayment,
+    });
+  } catch (error) {
+    res.status(500).json({ status: 500, error: error.message });
+  }
+};
+
 const deleteTurn = async (req, res) => {
   const { id } = req.params;
   try {
@@ -106,4 +126,10 @@ const deleteTurn = async (req, res) => {
   }
 };
 
-export default { createTurn, deleteTurn, getAllTurns, updateTurnsBarber };
+export default {
+  createTurn,
+  deleteTurn,
+  getAllTurns,
+  updateTurnsBarber,
+  updatePayment,
+};

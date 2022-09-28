@@ -13,6 +13,8 @@ router.post("/", authVerify.verifyToken, turnController.createTurn);
  * Actualizar turno de barbero
  */
 router.put("/:id", turnController.updateTurnsBarber);
+
+router.put("/:id/payment", turnController.updatePayment);
 /**
  * Traer todos los turnos creados
  */
