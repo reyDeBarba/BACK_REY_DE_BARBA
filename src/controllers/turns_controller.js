@@ -105,24 +105,24 @@ const updateTurnsBarber = async (req, res) => {
         },
       },
       { new: true }
-    )
-      .populate("barberId", {
-        firstName: 1,
-        photoURL: 1,
-        email: 1,
-      })
-      .populate("clientId", {
-        email: 1,
-        firstName: 1,
-        photoURL: 1,
-      })
-      .populate("serviceId", {
-        amount: 1,
-        description: 1,
-        photoURL: 1,
-        points: 1,
-        title: 1,
-      });
+    );
+    // .populate("barberId", {
+    //   firstName: 1,
+    //   photoURL: 1,
+    //   email: 1,
+    // })
+    // .populate("clientId", {
+    //   email: 1,
+    //   firstName: 1,
+    //   photoURL: 1,
+    // })
+    // .populate("serviceId", {
+    //   amount: 1,
+    //   description: 1,
+    //   photoURL: 1,
+    //   points: 1,
+    //   title: 1,
+    // });
     res
       .status(200)
       .json({ status: 200, message: "Turn update", data: newTurns });
