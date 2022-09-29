@@ -73,4 +73,24 @@ const viewsAndNotSeen = async (req, res) => {
   }
 };
 
-export default { createPost, getAllPosts, likeDislike, viewsAndNotSeen };
+const deletePost = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const postDeleted = await Post.findByIdAndDelete(id);
+    res.status(200).json({
+      status: 200,
+      message: "Successfully user deleted",
+      data: postDeleted._id,
+    });
+  } catch (error) {
+    res.status(500).json({ status: 500, error: error.message });
+  }
+};
+
+export default {
+  createPost,
+  deletePost,
+  getAllPosts,
+  likeDislike,
+  viewsAndNotSeen,
+};

@@ -7,5 +7,6 @@ router.get("/", postController.getAllPosts);
 router.post("/", postController.createPost);
 router.put("/:id/likes", postController.likeDislike);
 router.put("/:id/views", postController.viewsAndNotSeen);
+router.delete("/:id", postController.deletePost);
 
 export default router;
