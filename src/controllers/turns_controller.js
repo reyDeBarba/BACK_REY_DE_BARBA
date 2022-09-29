@@ -16,27 +16,28 @@ const createTurn = async (req, res) => {
   });
   try {
     const turn = await newTurn.save();
+    const turnSaved = await Turns.findById(turn._id)
+      .populate("barberId", {
+        firstName: 1,
+        photoURL: 1,
+        email: 1,
+      })
+      .populate("clientId", {
+        email: 1,
+        firstName: 1,
+        photoURL: 1,
+      })
+      .populate("serviceId", {
+        amount: 1,
+        description: 1,
+        photoURL: 1,
+        points: 1,
+        title: 1,
+      });
     res.status(201).json({
       status: 201,
       message: "Turn successfully created",
-      data: turn
-        .populate("barberId", {
-          firstName: 1,
-          photoURL: 1,
-          email: 1,
-        })
-        .populate("clientId", {
-          email: 1,
-          firstName: 1,
-          photoURL: 1,
-        })
-        .populate("serviceId", {
-          amount: 1,
-          description: 1,
-          photoURL: 1,
-          points: 1,
-          title: 1,
-        }),
+      data: turnSaved,
     });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
