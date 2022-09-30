@@ -26,7 +26,9 @@ const register = async (req, res) => {
     const savedUser = await newUser.save();
     res.status(201).json({ status: 201, data: savedUser });
   } catch (error) {
-    res.status(error.status || 500).send(error.message);
+    res
+      .status(error.status || 500)
+      .json({ status: error.status, message: error.message });
   }
 };
 
@@ -95,7 +97,9 @@ const login = async (req, res) => {
         accessToken,
       });
   } catch (error) {
-    res.status(error.status || 500).send(error.message);
+    res
+      .status(error.status || 500)
+      .json({ status: error.status, message: error.message });
   }
 };
 
