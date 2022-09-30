@@ -7,49 +7,49 @@ import { Op } from "sequelize";
 
 const router = Router();
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/oauth2/redirect/google",
-      scope: ["profile"],
-    },
-    (accessToken, refreshToken, profile, cb) => {
-      const [user, created] = User.findOrCreate({
-        where: {
-          email: { [Op.in]: profile.emails.map((email) => email.value) },
-        },
-        defaults: {
-          email: profile.emails[0],
-          firstName: profile.givenName,
-          lastName: profile.familyName,
-          photoURL: profile.photos[0].value,
-          points: 0,
-        },
-      });
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: process.env.GOOGLE_CLIENT_ID,
+//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//       callbackURL: "/oauth2/redirect/google",
+//       scope: ["profile"],
+//     },
+//     (accessToken, refreshToken, profile, cb) => {
+//       const [user, created] = User.findOrCreate({
+//         where: {
+//           email: { [Op.in]: profile.emails.map((email) => email.value) },
+//         },
+//         defaults: {
+//           email: profile.emails[0],
+//           firstName: profile.givenName,
+//           lastName: profile.familyName,
+//           photoURL: profile.photos[0].value,
+//           points: 0,
+//         },
+//       });
 
-      if (!created) {
-        cb(null, { ...user, accessToken, refreshToken });
-      } else {
-        cb(null, { ...user, accessToken, refreshToken });
-      }
-    }
-  )
-);
+//       if (!created) {
+//         cb(null, { ...user, accessToken, refreshToken });
+//       } else {
+//         cb(null, { ...user, accessToken, refreshToken });
+//       }
+//     }
+//   )
+// );
 
-passport.serializeUser(function (user, cb) {
-  process.nextTick(function () {
-    console.log(user.username);
-    cb(null, { id: user.id, username: user.username, name: user.name });
-  });
-});
+// passport.serializeUser(function (user, cb) {
+//   process.nextTick(function () {
+//     console.log(user.username);
+//     cb(null, { id: user.id, username: user.username, name: user.name });
+//   });
+// });
 
-passport.deserializeUser(function (user, cb) {
-  process.nextTick(function () {
-    return cb(null, user);
-  });
-});
+// passport.deserializeUser(function (user, cb) {
+//   process.nextTick(function () {
+//     return cb(null, user);
+//   });
+// });
 
 /**
  * @swagger
@@ -105,14 +105,14 @@ router.post("/register", authControllers.register);
 
 router.post("/login", authControllers.login);
 
-router.get("/login/federated/google", passport.authenticate("google"));
+// router.get("/login/federated/google", passport.authenticate("google"));
 
-router.get(
-  "/oauth2/redirect/google",
-  passport.authenticate("google", {
-    successRedirect: "/",
-    failureRedirect: "/",
-  })
-);
+// router.get(
+//   "/oauth2/redirect/google",
+//   passport.authenticate("google", {
+//     successRedirect: "/",
+//     failureRedirect: "/",
+//   })
+// );
 
 export default router;

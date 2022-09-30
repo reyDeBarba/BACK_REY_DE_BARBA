@@ -12,58 +12,50 @@ const { x64 } = CryptoJS;
  */
 
 const register = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, firstName } = req.body;
 
   try {
-    const user = User.findOne({ email });
-    if (user)
-      throw {
-        message: "Este email ya está siendo usado por otro usuario",
-        status: 409,
-      };
-
     const newUser = new User({
       email,
+      firstName,
       password: CryptoJS.AES.encrypt(
         password,
         process.env.HASH_SECRET_KEY
       ).toString(),
     });
-    await newUser.save();
-    const { password, ...others } = newUser._doc;
-
-    res.status(201).json(...others);
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser);
   } catch (error) {
     res.status(error.status || 500).send(error.message);
   }
 };
 
-const registerWithGoogle = async (req, res) => {
-  const { email, password } = req.body;
+// const registerWithGoogle = async (req, res) => {
+//   const { email, password } = req.body;
 
-  try {
-    const user = User.findOne({ email });
-    if (user)
-      throw {
-        message: "Este email ya está siendo usado por otro usuario",
-        status: 409,
-      };
+//   try {
+//     const user = User.findOne({ email });
+//     if (user)
+//       throw {
+//         message: "Este email ya está siendo usado por otro usuario",
+//         status: 409,
+//       };
 
-    const newUser = new User({
-      email,
-      password: CryptoJS.AES.encrypt(
-        password,
-        process.env.HASH_SECRET_KEY
-      ).toString(),
-    });
-    await newUser.save();
-    const { password, ...others } = newUser._doc;
+//     const newUser = new User({
+//       email,
+//       password: CryptoJS.AES.encrypt(
+//         password,
+//         process.env.HASH_SECRET_KEY
+//       ).toString(),
+//     });
+//     await newUser.save();
+//     const { password, ...others } = newUser._doc;
 
-    res.status(201).json(...others);
-  } catch (error) {
-    res.status(error.status || 500).send(error.message);
-  }
-};
+//     res.status(201).json(...others);
+//   } catch (error) {
+//     res.status(error.status || 500).send(error.message);
+//   }
+// };
 
 /**
  * Login del usuario
@@ -90,7 +82,7 @@ const login = async (req, res) => {
         admin: user.admin,
       },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: "3d" }
+      { expiresIn: "7h" }
     );
 
     const { password, ...others } = user._doc;
@@ -107,4 +99,4 @@ const login = async (req, res) => {
   }
 };
 
-export default { register, registerWithGoogle, login };
+export default { register, login };
