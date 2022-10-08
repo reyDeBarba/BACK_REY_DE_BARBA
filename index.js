@@ -32,8 +32,8 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
  */
 app.listen(process.env.PORT || 8000, () => {
   console.log(`Server is running on port ${process.env.PORT || 8000}`);
+  if(seed === 'true') {
+    seedDB()
+  }
 });
 
-if(seed === 'true') {
-  seedDB()
-}
