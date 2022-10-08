@@ -22,7 +22,8 @@ const seedDB = async () => {
         'administrador',
         process.env.HASH_SECRET_KEY
       ).toString(),
-      admin: true
+      admin: true,
+      photoURL: "https://firebasestorage.googleapis.com/v0/b/rey-de-barba-3.appspot.com/o/Avatars%2F6340ecf7f9077a047c161627?alt=media&token=d2692678-2890-47db-be2d-7b058cce6061"
     },
     {
       email: 'ignacio@gmail.com',
@@ -31,7 +32,8 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
-      barber: true
+      barber: true,
+      photoURL: "https://firebasestorage.googleapis.com/v0/b/rey-de-barba-3.appspot.com/o/Avatars%2F6340ecf7f9077a047c161627?alt=media&token=d2692678-2890-47db-be2d-7b058cce6061"
     },
     {
       email: 'bruno@gmail.com',
@@ -40,7 +42,8 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
-      barber: true
+      barber: true,
+      photoURL: "https://firebasestorage.googleapis.com/v0/b/rey-de-barba-3.appspot.com/o/Avatars%2F6340ecf7f9077a047c161627?alt=media&token=d2692678-2890-47db-be2d-7b058cce6061"
     },
     {
       email: 'hernan@gmail.com',
@@ -49,7 +52,8 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
-      barber: true
+      barber: true,
+      photoURL: "https://firebasestorage.googleapis.com/v0/b/rey-de-barba-3.appspot.com/o/Avatars%2F6340ecf7f9077a047c161627?alt=media&token=d2692678-2890-47db-be2d-7b058cce6061"
     },
     {
       email: 'felix@gmail.com',
@@ -58,7 +62,8 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
-      barber: true
+      barber: true,
+      photoURL: "https://firebasestorage.googleapis.com/v0/b/rey-de-barba-3.appspot.com/o/Avatars%2F6340ecf7f9077a047c161627?alt=media&token=d2692678-2890-47db-be2d-7b058cce6061"
     },
     {
       email: 'joshua@gmail.com',
@@ -67,7 +72,8 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
-      barber: true
+      barber: true,
+      photoURL: "https://firebasestorage.googleapis.com/v0/b/rey-de-barba-3.appspot.com/o/Avatars%2F6340ecf7f9077a047c161627?alt=media&token=d2692678-2890-47db-be2d-7b058cce6061"
     },
     {
       email: 'aurora@gmail.com',
