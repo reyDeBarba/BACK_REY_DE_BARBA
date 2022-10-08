@@ -16,7 +16,7 @@ const register = async (req, res) => {
 
   try {
     const newUser = new User({
-      email,
+      email: email.trimEnd(),
       firstName,
       password: CryptoJS.AES.encrypt(
         password,
