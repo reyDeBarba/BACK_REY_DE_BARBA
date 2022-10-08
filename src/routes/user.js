@@ -4,9 +4,9 @@ import authRole from "../middleware/roleValidate.js";
 
 const router = Router();
 
-router.get("/", authRole.varifyTokenAndAdmin, userController.getAlluser);
+router.get("/", userController.getAlluser);
 
-router.get("/:id", authRole.varifyTokenAndAdmin, userController.getOneUser);
+router.get("/:id", userController.getOneUser);
 
 router.put("/:id", authRole.varifyTokenAndAdmin, userController.updateRole);
 

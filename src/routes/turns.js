@@ -18,7 +18,7 @@ router.put("/:id/payment", turnController.updatePayment);
 /**
  * Traer todos los turnos creados
  */
-router.get("/", roleValidate.varifyTokenAndAdmin, turnController.getAllTurns);
+router.get("/", turnController.getAllTurns);
 
 router.delete(
   "/:id",

@@ -13,11 +13,11 @@ router.post("/", authRole.varifyTokenAndAdmin, barberController.createBarber);
 /**
  * Traer un barbero
  */
-router.get("/:id", authRole.varifyTokenAndAdmin, barberController.getOneBarber);
+router.get("/:id", barberController.getOneBarber);
 
 /**
  * Traer todos los barberos
  */
-router.get("/", verify.verifyToken, barberController.getAllBarbers);
+router.get("/", barberController.getAllBarbers);
 
 export default router;
