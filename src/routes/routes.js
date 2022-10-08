@@ -3,6 +3,7 @@ import authRoutes from "./auth.js";
 import barberRoutes from "./barber.js";
 import discountsRoutes from "./discounts.js";
 import postsRoutes from "./posts.js";
+import seedRoutes from "./seed.js"
 import servicesRoutes from "./services.js";
 import turnsRoutes from "./turns.js";
 import usersRoutes from "./user.js";
@@ -17,6 +18,7 @@ router.use("/auth", authRoutes);
 router.use("/barbers", barberRoutes);
 router.use("/discounts", discountsRoutes);
 router.use("/posts", postsRoutes);
+router.use("/seed", seedRoutes);
 router.use("/services", servicesRoutes);
 router.use("/turns", turnsRoutes);
 router.use("/users", usersRoutes);
