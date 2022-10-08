@@ -222,6 +222,7 @@ const seedDB = async () => {
       serviceId: serviceId._id,
     }
   )
+  console.log("***** DATA BASE CREADA!!!******")
 }
 
 export {seedDB}
