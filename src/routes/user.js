@@ -8,7 +8,7 @@ router.get("/", userController.getAlluser);
 
 router.get("/:id", userController.getOneUser);
 
-router.put("/:id", authRole.varifyTokenAndAdmin, userController.updateRole);
+router.put("/:id", userController.updateRole);
 
 router.put("/:id/discount", userController.updatePoints);
 
