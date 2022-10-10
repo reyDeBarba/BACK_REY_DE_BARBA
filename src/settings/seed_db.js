@@ -82,6 +82,7 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
+      points: 3000
     },
     {
       email: 'esteban@gmail.com',
@@ -90,6 +91,7 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
+      points: 200
     },
     {
       email: 'agustin@gmail.com',
@@ -97,7 +99,8 @@ const seedDB = async () => {
       password: CryptoJS.AES.encrypt(
         '123456789',
         process.env.HASH_SECRET_KEY
-      ).toString(),
+        ).toString(),
+        points: 2000
     },
     {
       email: 'valentina@gmail.com',
@@ -106,6 +109,7 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
+      points: 100
     },
     {
       email: 'luciano@gmail.com',
@@ -114,6 +118,7 @@ const seedDB = async () => {
         '123456789',
         process.env.HASH_SECRET_KEY
       ).toString(),
+      points: 10000
     },
   );
   await Discounts.create(
@@ -121,7 +126,7 @@ const seedDB = async () => {
       description: 'Con este cupon, accederas al 20% de descuento en tu proxima compra, en cualquier sucursal de Mostaza.',
       imageBanner: 'https://diariosanrafael.com.ar/wp-content/uploads/2022/03/Mostaza-1.jpg',
       imageLogo: 'https://mir-s3-cdn-cf.behance.net/projects/404/1cd8ce141121743.Y3JvcCwxMDA2LDc4NywxOTQsMA.jpg',
-      oints: 300,
+      points: 300,
       title: 'DESCUENTO',
     },
     {

@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema(
     firstName: { type: String },
     lastName: { type: String },
     photoURL: { type: String },
-    points: { type: Number },
+    points: { type: Number, default: 0 },
     barber: { type: Boolean, default: false },
     admin: { type: Boolean, default: false },
     works: { type: mongoose.Schema.Types.ObjectId, ref: "Works" },
