@@ -1,4 +1,4 @@
-import Post from "../models/Posts.js";
+import Post from '../models/Posts.js';
 
 /**
  * Crear un post
@@ -16,7 +16,7 @@ const createPost = async (req, res) => {
     const savedPost = await newPost.save();
     res.status(201).json({
       status: 201,
-      message: "Post successfully created",
+      message: 'Post successfully created',
       data: savedPost,
     });
   } catch (error) {
@@ -25,14 +25,17 @@ const createPost = async (req, res) => {
 };
 
 const getAllPosts = async (req, res) => {
+  const options = {
+    sort: { updatedAt: -1 },
+    populate: ['user', 'services'],
+    page: req.params.page || 1,
+    limit: req.params.limit || 10,
+  };
   try {
-    const allPosts = await Post.find({})
-      .populate("user")
-      .populate("services")
-      .exec();
+    const allPosts = await Post.paginate({}, options);
     res.status(200).json({
       status: 200,
-      message: "Successfully get all posts",
+      message: 'Successfully get all posts',
       data: allPosts,
     });
   } catch (error) {
@@ -50,7 +53,7 @@ const likeDislike = async (req, res) => {
       });
       res.status(200).json({
         status: 200,
-        message: "The post has been liked",
+        message: 'The post has been liked',
         data: req.body.userId,
       });
     } else {
@@ -59,7 +62,7 @@ const likeDislike = async (req, res) => {
       });
       res.status(200).json({
         status: 200,
-        message: "The post has been disliked",
+        message: 'The post has been disliked',
         data: req.body.userId,
       });
     }
@@ -75,9 +78,9 @@ const viewsAndNotSeen = async (req, res) => {
     const post = await Post.findById(id);
     if (!post.views.includes(req.body.userId)) {
       await post.updateOne({ $push: { views: req.body.userId } });
-      res.status(200).json({ status: 200, message: "The post has been view" });
+      res.status(200).json({ status: 200, message: 'The post has been view' });
     }
-    res.status(200).json({ status: 200, message: "You view post" });
+    res.status(200).json({ status: 200, message: 'You view post' });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
@@ -89,7 +92,7 @@ const deletePost = async (req, res) => {
     const postDeleted = await Post.findByIdAndDelete(id);
     res.status(200).json({
       status: 200,
-      message: "Successfully user deleted",
+      message: 'Successfully user deleted',
       data: postDeleted._id,
     });
   } catch (error) {

@@ -7,6 +7,7 @@ specifiers:
   express: ^4.18.1
   jsonwebtoken: ^8.5.1
   mongoose: ^6.5.3
+  mongoose-paginate-v2: ^1.7.1
   nodemon: ^2.0.19
   passport: ^0.6.0
   passport-google-oidc: ^0.1.0
@@ -21,10 +22,11 @@ dependencies:
   express: 4.18.1
   jsonwebtoken: 8.5.1
   mongoose: 6.6.0
+  mongoose-paginate-v2: 1.7.1
   passport: 0.6.0
   passport-google-oidc: 0.1.0
   sequelize: 6.21.6
-  swagger-jsdoc: 6.0.1_openapi-types@12.0.2
+  swagger-jsdoc: 6.0.1
   swagger-ui-express: 4.5.0_express@4.18.1
 
 devDependencies:
@@ -50,7 +52,7 @@ packages:
     resolution: {integrity: sha512-QAkD5kK2b1WfjDS/UQn/qQkbwF31uqRjPTrsCs5ZG9BQGAkjwvqGFjjPqAuzac/IYzpPtRzjCP1WrTuAIjMrXg==}
     dev: false
 
-  /@apidevtools/swagger-parser/10.0.2_openapi-types@12.0.2:
+  /@apidevtools/swagger-parser/10.0.2:
     resolution: {integrity: sha512-JFxcEyp8RlNHgBCE98nwuTkZT6eNFPc1aosWV6wPcQph72TSEEu1k3baJD4/x1qznU+JiDdz8F5pTwabZh+Dhg==}
     peerDependencies:
       openapi-types: '>=7'
@@ -60,7 +62,6 @@ packages:
       '@apidevtools/swagger-methods': 3.0.2
       '@jsdevtools/ono': 7.1.3
       call-me-maybe: 1.0.1
-      openapi-types: 12.0.2
       z-schema: 4.2.4
     dev: false
 
@@ -730,6 +731,11 @@ packages:
       saslprep: 1.0.3
     dev: false
 
+  /mongoose-paginate-v2/1.7.1:
+    resolution: {integrity: sha512-J8DJw3zRXcXOKoZv+RvO9tt5HotRnbo2iCR3lke+TtsQsYwQvbY3EgUkPqZXw6qCX2IByvXrW5SGNdAB0od/Cw==}
+    engines: {node: '>=4.0.0'}
+    dev: false
+
   /mongoose/6.6.0:
     resolution: {integrity: sha512-5sS0D7qbmfT4G/nODkJhx5l2qvhqLMplhMlp08Wea8eoi6O/B6b+o1ukUEKjjm1MV8dAS3w8kx47R/klYKLPpQ==}
     engines: {node: '>=12.0.0'}
@@ -829,10 +835,6 @@ packages:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
       wrappy: 1.0.2
-    dev: false
-
-  /openapi-types/12.0.2:
-    resolution: {integrity: sha512-GuTo7FyZjOIWVhIhQSWJVaws6A82sWIGyQogxxYBYKZ0NBdyP2CYSIgOwFfSB+UVoPExk/YzFpyYitHS8KVZtA==}
     dev: false
 
   /parseurl/1.3.3:
@@ -1118,7 +1120,7 @@ packages:
       has-flag: 3.0.0
     dev: true
 
-  /swagger-jsdoc/6.0.1_openapi-types@12.0.2:
+  /swagger-jsdoc/6.0.1:
     resolution: {integrity: sha512-Rpyq3aMR3wlLie9syaLRwF7WmWHNvSXRBzqn4P45rdJ1tXGIxFBeKRQG/Y/1YmBh3BmK6ds29CMavzDLWqRlpw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
@@ -1126,17 +1128,17 @@ packages:
       commander: 6.2.0
       doctrine: 3.0.0
       glob: 7.1.6
-      swagger-parser: 10.0.2_openapi-types@12.0.2
+      swagger-parser: 10.0.2
       yaml: 2.0.0-1
     transitivePeerDependencies:
       - openapi-types
     dev: false
 
-  /swagger-parser/10.0.2_openapi-types@12.0.2:
+  /swagger-parser/10.0.2:
     resolution: {integrity: sha512-9jHkHM+QXyLGFLk1DkXBwV+4HyNm0Za3b8/zk/+mjr8jgOSiqm3FOTHBSDsBjtn9scdL+8eWcHdupp2NLM8tDw==}
     engines: {node: '>=10'}
     dependencies:
-      '@apidevtools/swagger-parser': 10.0.2_openapi-types@12.0.2
+      '@apidevtools/swagger-parser': 10.0.2
     transitivePeerDependencies:
       - openapi-types
     dev: false
