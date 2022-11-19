@@ -28,8 +28,8 @@ const getAllPosts = async (req, res) => {
   const options = {
     sort: { updatedAt: -1 },
     populate: ['user', 'services'],
-    page: req.params.page || 1,
-    limit: req.params.limit || 10,
+    page: req.query.page || 1,
+    limit: req.query.limit || 10,
   };
   try {
     const allPosts = await Post.paginate({}, options);
