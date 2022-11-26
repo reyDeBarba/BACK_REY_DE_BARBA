@@ -1,6 +1,6 @@
-import User from "../models/User.js";
-import CryptoJS from "crypto-js";
-import jwt from "jsonwebtoken";
+import User from '../models/User.js';
+import CryptoJS from 'crypto-js';
+import jwt from 'jsonwebtoken';
 
 const { sign } = jwt;
 const { x64 } = CryptoJS;
@@ -69,7 +69,7 @@ const login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user)
-      throw { message: "No existe un usuario con este email", status: 404 };
+      throw { message: 'No existe un usuario con este email', status: 404 };
 
     const decode = CryptoJS.AES.decrypt(
       user.password,
@@ -84,13 +84,13 @@ const login = async (req, res) => {
         admin: user.admin,
       },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: "7h" }
+      { expiresIn: '7h' }
     );
 
     const { password, ...others } = user._doc;
 
     if (descryptedPassword !== req.body.password)
-      throw { message: "Credenciales inválidas", status: 401 };
+      res.status(401).json({ message: 'Credenciales inválidas', status: 401 });
     else
       res.status(200).json({
         ...others,
