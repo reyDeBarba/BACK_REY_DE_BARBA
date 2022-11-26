@@ -69,7 +69,9 @@ const login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user)
-      throw { message: 'No existe un usuario con este email', status: 404 };
+      return res
+        .status(500)
+        .json({ message: 'No existe un usuario con este email', status: 404 });
 
     const decode = CryptoJS.AES.decrypt(
       user.password,
@@ -89,13 +91,9 @@ const login = async (req, res) => {
 
     const { password, ...others } = user._doc;
 
-    if (descryptedPassword !== req.body.password)
-      res.status(401).json({ message: 'Credenciales inválidas', status: 401 });
-    else
-      res.status(200).json({
-        ...others,
-        accessToken,
-      });
+    descryptedPassword !== req.body.password
+      ? res.status(401).json({ message: 'Credenciales inválidas', status: 401 })
+      : res.status(200).json({ ...others, accessToken });
   } catch (error) {
     res
       .status(error.status || 500)
