@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema(
   {
@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema(
       unique: true,
       maxlength: 100,
       required: true,
-      match: [/.+\@.+\..+/, "Please fill a valid email address"],
+      match: [/.+\@.+\..+/, 'Please fill a valid email address'],
     },
     password: {
       type: String,
@@ -20,9 +20,10 @@ const UserSchema = new mongoose.Schema(
     points: { type: Number, default: 0 },
     barber: { type: Boolean, default: false },
     admin: { type: Boolean, default: false },
-    works: { type: mongoose.Schema.Types.ObjectId, ref: "Works" },
+    works: { type: mongoose.Schema.Types.ObjectId, ref: 'Works' },
+    isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model('User', UserSchema);
