@@ -1,23 +1,27 @@
-import { Router } from "express";
-import authRole from "../middleware/roleValidate.js";
-import verify from "../middleware/authVerify.js";
-import barberController from "../controllers/barber_controller.js";
+import { Router } from 'express';
+import authRole from '../middleware/roleValidate.js';
+import barberController from '../controllers/barber_controller.js';
 
 const router = Router();
 
 /**
  * Crear barbero
  */
-router.post("/", authRole.varifyTokenAndAdmin, barberController.createBarber);
+router.post('/', authRole.varifyTokenAndAdmin, barberController.createBarber);
 
 /**
  * Traer un barbero
  */
-router.get("/:id", barberController.getOneBarber);
+router.get('/:id', barberController.getOneBarber);
 
 /**
  * Traer todos los barberos
  */
-router.get("/", barberController.getAllBarbers);
+router.get('/', barberController.getAllBarbers);
+
+/**
+ * Traer todos los barberos
+ */
+router.put('/:id', barberController.deleteBarber);
 
 export default router;

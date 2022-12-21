@@ -7,7 +7,7 @@ import Turns from '../models/Turns.js';
 
 const seedDB = async () => {
   // DELETED ALL DB
-  // await User.deleteMany()
+  await User.deleteMany();
   // await Discounts.deleteMany()
   // await Services.deleteMany()
   // await Posts.deleteMany()
@@ -122,65 +122,65 @@ const seedDB = async () => {
     //   points: 10000
     // },
   );
-  await Discounts.create(
-    {
-      description:
-        'Con este cupon, accederas al 20% de descuento en tu proxima compra, en cualquier sucursal de Mostaza.',
-      imageBanner:
-        'https://diariosanrafael.com.ar/wp-content/uploads/2022/03/Mostaza-1.jpg',
-      imageLogo:
-        'https://mir-s3-cdn-cf.behance.net/projects/404/1cd8ce141121743.Y3JvcCwxMDA2LDc4NywxOTQsMA.jpg',
-      points: 300,
-      title: 'DESCUENTO',
-    },
-    {
-      description:
-        'Con este cupon, accederas a 4 combos SUPER MAX en cualquier sucursal de ¡Mostaza!.',
-      imageBanner:
-        'https://diariosanrafael.com.ar/wp-content/uploads/2022/03/Mostaza-1.jpg',
-      imageLogo:
-        'https://mir-s3-cdn-cf.behance.net/projects/404/1cd8ce141121743.Y3JvcCwxMDA2LDc4NywxOTQsMA.jpg',
-      points: 1000,
-      title: 'MEGA PROMO',
-    },
-    {
-      description:
-        'Con este cupon, obtendras un descuento del 15% de descuento en la proxima compra en Musimundo.',
-      imageBanner:
-        'https://www.cronista.com/files/image/326/326566/60708b22dcb85.jpg',
-      imageLogo:
-        'https://mir-s3-cdn-cf.behance.net/projects/404/a21ea2142476133.Y3JvcCwxMDE1LDc5NCwyLDA.jpg',
-      points: 800,
-      title: 'MUSIMUNDO',
-    }
-  );
-  await Services.create(
-    {
-      amount: '800',
-      description: 'Se realizara, un corte de cabello a elección mas lavado.',
-      photoURL:
-        'https://i.pinimg.com/564x/ff/d7/e2/ffd7e20c1a8870169516f8c732643ece--drop-fade-hair-barber.jpg',
-      points: 40,
-      title: 'Corte',
-    },
-    {
-      amount: '400',
-      description: 'Se realizara, dibujo de barba.',
-      photoURL:
-        'https://st2.depositphotos.com/5444644/8320/i/450/depositphotos_83202444-stock-photo-hairdresser-cutting-beard.jpg',
-      points: 20,
-      title: 'Barba',
-    },
-    {
-      amount: '1000',
-      description:
-        'Se realizara, corte de cabello, corte de barba y lavado de cabeza.',
-      photoURL:
-        'https://st2.depositphotos.com/5444644/8320/i/450/depositphotos_83202444-stock-photo-hairdresser-cutting-beard.jpg',
-      points: 50,
-      title: 'Corte Más Barba',
-    }
-  );
+  // await Discounts.create(
+  //   {
+  //     description:
+  //       'Con este cupon, accederas al 20% de descuento en tu proxima compra, en cualquier sucursal de Mostaza.',
+  //     imageBanner:
+  //       'https://diariosanrafael.com.ar/wp-content/uploads/2022/03/Mostaza-1.jpg',
+  //     imageLogo:
+  //       'https://mir-s3-cdn-cf.behance.net/projects/404/1cd8ce141121743.Y3JvcCwxMDA2LDc4NywxOTQsMA.jpg',
+  //     points: 300,
+  //     title: 'DESCUENTO',
+  //   },
+  //   {
+  //     description:
+  //       'Con este cupon, accederas a 4 combos SUPER MAX en cualquier sucursal de ¡Mostaza!.',
+  //     imageBanner:
+  //       'https://diariosanrafael.com.ar/wp-content/uploads/2022/03/Mostaza-1.jpg',
+  //     imageLogo:
+  //       'https://mir-s3-cdn-cf.behance.net/projects/404/1cd8ce141121743.Y3JvcCwxMDA2LDc4NywxOTQsMA.jpg',
+  //     points: 1000,
+  //     title: 'MEGA PROMO',
+  //   },
+  //   {
+  //     description:
+  //       'Con este cupon, obtendras un descuento del 15% de descuento en la proxima compra en Musimundo.',
+  //     imageBanner:
+  //       'https://www.cronista.com/files/image/326/326566/60708b22dcb85.jpg',
+  //     imageLogo:
+  //       'https://mir-s3-cdn-cf.behance.net/projects/404/a21ea2142476133.Y3JvcCwxMDE1LDc5NCwyLDA.jpg',
+  //     points: 800,
+  //     title: 'MUSIMUNDO',
+  //   }
+  // );
+  // await Services.create(
+  //   {
+  //     amount: '800',
+  //     description: 'Se realizara, un corte de cabello a elección mas lavado.',
+  //     photoURL:
+  //       'https://i.pinimg.com/564x/ff/d7/e2/ffd7e20c1a8870169516f8c732643ece--drop-fade-hair-barber.jpg',
+  //     points: 40,
+  //     title: 'Corte',
+  //   },
+  //   {
+  //     amount: '400',
+  //     description: 'Se realizara, dibujo de barba.',
+  //     photoURL:
+  //       'https://st2.depositphotos.com/5444644/8320/i/450/depositphotos_83202444-stock-photo-hairdresser-cutting-beard.jpg',
+  //     points: 20,
+  //     title: 'Barba',
+  //   },
+  //   {
+  //     amount: '1000',
+  //     description:
+  //       'Se realizara, corte de cabello, corte de barba y lavado de cabeza.',
+  //     photoURL:
+  //       'https://st2.depositphotos.com/5444644/8320/i/450/depositphotos_83202444-stock-photo-hairdresser-cutting-beard.jpg',
+  //     points: 50,
+  //     title: 'Corte Más Barba',
+  //   }
+  // );
   // const clientId = await User.findOne({barber: false, admin: false})
   // const barberId = await User.findOne({barber: true})
   // const serviceId = await Services.findOne({amount: "800"})
