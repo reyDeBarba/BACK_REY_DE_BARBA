@@ -1,4 +1,4 @@
-import Services from "../models/Services.js";
+import Services from '../models/Services.js';
 
 /**
  * Traer todos los servicios
@@ -9,13 +9,11 @@ import Services from "../models/Services.js";
 const allServices = async (req, res) => {
   try {
     const allServices = await Services.find({});
-    res
-      .status(200)
-      .json({
-        status: 200,
-        message: "Successfully, all services",
-        data: allServices,
-      });
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully, all services',
+      data: allServices,
+    });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
@@ -36,12 +34,34 @@ const createService = async (req, res) => {
   });
   try {
     const serviceSave = await newService.save();
-    res
-      .status(201)
-      .json({ status: 201, message: "Service created successfully", data:serviceSave });
+    res.status(201).json({
+      status: 201,
+      message: 'Service created successfully',
+      data: serviceSave,
+    });
   } catch (error) {
     res.status(500).json({ status: 500, error: error.message });
   }
 };
 
-export default { allServices, createService };
+const deleteService = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const service = await Services.findByIdAndUpdate(
+      id,
+      {
+        $set: req.body,
+      },
+      { new: true },
+    );
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully delete service',
+      data: service,
+    });
+  } catch (error) {
+    res.status(500).json({ status: 500, error: error.message });
+  }
+};
+
+export default { allServices, createService, deleteService };

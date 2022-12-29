@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const ServicesSchema = new mongoose.Schema(
   {
@@ -7,8 +7,9 @@ const ServicesSchema = new mongoose.Schema(
     photoURL: { type: String },
     points: { type: Number },
     title: { type: String },
+    isDeleted: { type: Boolean, default: false },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export default mongoose.model("Services", ServicesSchema);
+export default mongoose.model('Services', ServicesSchema);
