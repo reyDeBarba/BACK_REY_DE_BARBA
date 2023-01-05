@@ -12,11 +12,7 @@ router.get('/', serviceControllers.allServices);
 /**
  * Crear un nuevo servicio
  */
-router.post(
-  '/',
-  roleValidate.varifyTokenAndAdmin,
-  serviceControllers.createService,
-);
+router.post('/', serviceControllers.createService);
 
 /**
  * Traer todos los barberos

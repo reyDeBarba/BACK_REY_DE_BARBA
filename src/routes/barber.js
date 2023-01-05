@@ -7,7 +7,7 @@ const router = Router();
 /**
  * Crear barbero
  */
-router.post('/', authRole.varifyTokenAndAdmin, barberController.createBarber);
+router.post('/', barberController.createBarber);
 
 /**
  * Traer un barbero
