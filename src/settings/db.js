@@ -1,9 +1,16 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import { seedDB } from './seed_db.js';
 
 dotenv.config();
 
-mongoose
-  .connect(process.env.LOCAL_DB)
-  .then(() => console.log('MongoDB Connected'))
-  .catch((err) => console.log(err));
+const connectionDb = () =>
+  mongoose
+    .connect(process.env.LOCAL_DB)
+    .then(() => {
+      console.log('CONECTED DATABASE');
+      seedDB();
+    })
+    .catch((err) => console.log(err));
+
+export default connectionDb;

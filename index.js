@@ -1,12 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import './src/settings/db.js';
+import dbConnect from './src/settings/db.js';
 import indexRoutes from './src/routes/routes.js';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import { options } from './src/settings/swaggerOptions.js';
-import { seedDB } from './src/settings/seed_db.js';
 
 const app = express();
 dotenv.config();
@@ -30,5 +29,5 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
  */
 app.listen(process.env.PORT || 8000, () => {
   console.log(`Server is running on port ${process.env.PORT || 8000}`);
-  seedDB();
+  dbConnect();
 });
